@@ -6,15 +6,6 @@ const router = createBrowserRouter([
   {
     path: '/map',
     element: <MapPage />,
-    // path: PATH.MAIN,
-    // element: <Layout />,
-    // children: [
-    //   {
-    //     path: PATH.MAIN,
-    //     element: <MainPage />,
-    //     loader: loginLoader,
-    //   },
-    // ],
   },
 ])
 
