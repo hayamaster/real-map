@@ -1,5 +1,6 @@
 import { APIProvider, Map } from '@vis.gl/react-google-maps'
 import { MapOptions, MarkerInfo } from './components'
+import { useState } from 'react'
 
 const center = {
   lat: 35.7143934,
@@ -7,6 +8,7 @@ const center = {
 }
 
 const MapPage = () => {
+  const [isMapLoaded, setIsMapLoaded] = useState(false)
   const markers = [
     {
       id: 1,
@@ -17,13 +19,24 @@ const MapPage = () => {
   ]
 
   return (
-    <APIProvider apiKey={import.meta.env.VITE_GOOGLE_KEY}>
-      <Map zoom={16} center={center} mapId="0812">
-        {markers.map((marker) => (
-          <MarkerInfo markerInfo={marker} key={marker.id} />
-        ))}
-      </Map>
-      <MapOptions />
+    <APIProvider
+      apiKey={import.meta.env.VITE_GOOGLE_KEY}
+      onLoad={() => {
+        setIsMapLoaded(true)
+        console.log('?')
+      }}
+    >
+      {isMapLoaded && (
+        <>
+          <Map zoom={16} center={center}>
+            {markers &&
+              markers.map((marker) => (
+                <MarkerInfo markerInfo={marker} key={marker.id} />
+              ))}
+          </Map>
+          <MapOptions />
+        </>
+      )}
     </APIProvider>
   )
 }

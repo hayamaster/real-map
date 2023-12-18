@@ -1,10 +1,7 @@
 import { useState } from 'react'
-import {
-  AdvancedMarker,
-  Pin,
-  InfoWindow,
-  useAdvancedMarkerRef,
-} from '@vis.gl/react-google-maps'
+import { Marker, InfoWindow, useMarkerRef } from '@vis.gl/react-google-maps'
+import { MarkerIcon } from '@/assets/Icons'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 interface Position {
   lat: number
@@ -22,26 +19,31 @@ interface MarkerInfoProps {
 }
 
 const MarkerInfo = ({ markerInfo }: MarkerInfoProps) => {
-  const [markerRef, marker] = useAdvancedMarkerRef()
+  const [markerRef, marker] = useMarkerRef()
   const [infowindowShown, setInfowindowShown] = useState(false)
   const toggleInfoWindow = () =>
     setInfowindowShown((previousState) => !previousState)
 
-  const closeInfoWindow = () => setInfowindowShown(false)
+  const customIcon = {
+    url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
+      renderToStaticMarkup(<MarkerIcon />),
+    )}`,
+    scaledSize: new window.google.maps.Size(50, 50),
+  }
 
   return (
-    <AdvancedMarker
-      position={markerInfo.position}
-      ref={markerRef}
-      onClick={toggleInfoWindow}
-    >
-      <Pin background={'#FBBC04'} glyphColor={'black'} borderColor={'#000'} />
+    <>
+      <Marker
+        position={markerInfo.position}
+        ref={markerRef}
+        onMouseOver={toggleInfoWindow}
+        onMouseOut={toggleInfoWindow}
+        icon={customIcon}
+      />
       {infowindowShown && (
-        <InfoWindow anchor={marker} onCloseClick={closeInfoWindow}>
-          {markerInfo.name}
-        </InfoWindow>
+        <InfoWindow anchor={marker}>{markerInfo.name}</InfoWindow>
       )}
-    </AdvancedMarker>
+    </>
   )
 }
 
