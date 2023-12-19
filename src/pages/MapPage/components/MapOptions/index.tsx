@@ -7,6 +7,7 @@ const mapOption = {
   clickableIcons: false,
   mapTypeControl: false,
   streetViewControl: false,
+  fullscreenControl: false,
 
   styles: [
     {
