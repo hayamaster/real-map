@@ -24,8 +24,8 @@ const MapPage = () => {
       onLoad={() => setIsMapLoaded(true)}
     >
       <div className="fixed left-5 top-5 z-10">
-        <div className="rounded-xl bg-[#9747FF] px-3.5 py-2.5">
-          <p className="text-xl font-medium text-white">
+        <div className="rounded-xl bg-[#9747FF] px-2 py-1.5 md:px-3.5 md:py-2.5">
+          <p className="text-md font-medium text-white md:text-xl">
             👩🏻‍💻🧑🏻‍💻 パソコンで作業しやすいカフェ
           </p>
         </div>
