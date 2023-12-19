@@ -23,6 +23,13 @@ const MapPage = () => {
       apiKey={import.meta.env.VITE_GOOGLE_KEY}
       onLoad={() => setIsMapLoaded(true)}
     >
+      <div className="fixed left-5 top-5 z-10">
+        <div className="rounded-xl bg-[#9747FF] px-3.5 py-2.5">
+          <p className="text-xl font-medium text-white">
+            👩🏻‍💻🧑🏻‍💻 パソコンで作業しやすいカフェ
+          </p>
+        </div>
+      </div>
       {isMapLoaded && (
         <>
           <Map zoom={16} center={center}>
