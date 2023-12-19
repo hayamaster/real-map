@@ -21,18 +21,14 @@ const MapPage = () => {
   return (
     <APIProvider
       apiKey={import.meta.env.VITE_GOOGLE_KEY}
-      onLoad={() => {
-        setIsMapLoaded(true)
-        console.log('?')
-      }}
+      onLoad={() => setIsMapLoaded(true)}
     >
       {isMapLoaded && (
         <>
           <Map zoom={16} center={center}>
-            {markers &&
-              markers.map((marker) => (
-                <MarkerInfo markerInfo={marker} key={marker.id} />
-              ))}
+            {markers.map((marker) => (
+              <MarkerInfo markerInfo={marker} key={marker.id} />
+            ))}
           </Map>
           <MapOptions />
         </>

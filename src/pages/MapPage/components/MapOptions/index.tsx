@@ -5,6 +5,8 @@ const mapOption = {
   minZoom: 4,
   maxZoom: 20,
   clickableIcons: false,
+  mapTypeControl: false,
+  streetViewControl: false,
 
   styles: [
     {
