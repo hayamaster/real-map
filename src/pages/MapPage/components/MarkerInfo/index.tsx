@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Marker,
   InfoWindow,
@@ -22,9 +22,10 @@ interface Mark {
 
 interface MarkerInfoProps {
   markerInfo: Mark
+  focusId: number
 }
 
-const MarkerInfo = ({ markerInfo }: MarkerInfoProps) => {
+const MarkerInfo = ({ markerInfo, focusId }: MarkerInfoProps) => {
   const map = useMap()
   const [markerRef, marker] = useMarkerRef()
   const [infowindowShown, setInfowindowShown] = useState(false)
@@ -37,6 +38,10 @@ const MarkerInfo = ({ markerInfo }: MarkerInfoProps) => {
     )}`,
     scaledSize: new window.google.maps.Size(50, 50),
   }
+
+  useEffect(() => {
+    setInfowindowShown(focusId === markerInfo.id)
+  }, [focusId, markerInfo])
 
   const handleClickMarker = () => {
     if (!map) return
@@ -57,10 +62,10 @@ const MarkerInfo = ({ markerInfo }: MarkerInfoProps) => {
         onClick={handleClickMarker}
       />
       {infowindowShown && (
-        <InfoWindow anchor={marker}>
+        <InfoWindow anchor={marker} disableAutoPan={true}>
           <div className="bg-[#e2a0f3] px-1 py-1">
-            <div className="rounded-md bg-white px-2 py-0.5">
-              <p className="text-lg font-medium text-[#70046C]">
+            <div className="rounded-md bg-white px-2 py-1 md:px-3 md:py-2">
+              <p className="text-base font-medium text-[#70046C] md:text-xl">
                 {markerInfo.name}
               </p>
             </div>
