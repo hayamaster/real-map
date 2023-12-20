@@ -39,7 +39,7 @@ const AddingRequest = () => {
         </form>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5 p-2 md:p-4">
-            <h1 className="text-lg font-semibold text-[#70046C] md:text-3xl">
+            <h1 className="text-xl font-semibold text-[#70046C] md:text-3xl">
               追加リクエスト
             </h1>
             <div className="text-base text-gray-500 md:text-xl">
@@ -48,7 +48,7 @@ const AddingRequest = () => {
             </div>
           </div>
           <form
-            className="flex flex-col gap-4 px-2 py-1 md:px-4 md:py-3"
+            className="flex flex-col gap-4 px-1 py-0.5 md:px-3 md:py-2"
             onSubmit={handleSubmit}
           >
             <Input
@@ -67,7 +67,7 @@ const AddingRequest = () => {
               onChange={(e) => setCafeAddress(e.currentTarget.value)}
             />
             <div className="ml-auto">
-              <button className="rounded-md bg-[#9747FF] px-2 py-1 text-xl text-white md:px-4 md:py-2">
+              <button className="rounded-md bg-[#9747FF] px-3 py-1 text-xl text-white md:px-5 md:py-2">
                 提出
               </button>
             </div>
