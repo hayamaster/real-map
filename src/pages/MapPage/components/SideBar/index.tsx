@@ -32,7 +32,7 @@ const SideBar = ({ markerInformation, setFocusId }: MarkerInformationProps) => {
   }
 
   return (
-    <div className="fixed right-3 top-0 z-10 flex h-full cursor-pointer flex-col gap-2.5 overflow-scroll py-3 md:right-6 md:py-5">
+    <div className="absolute left-1/2 top-2/3 z-10 flex h-[33%] min-w-[15rem] -translate-x-1/2 cursor-pointer flex-col gap-2.5 overflow-scroll py-3 md:left-auto md:right-3 md:top-0 md:h-full md:translate-x-0 md:py-5">
       {markerInformation.map(
         ({ id, name, location, description, position }) => (
           <div
