@@ -58,7 +58,7 @@ const MarkerInfo = ({ markerInfo, focusId }: MarkerInfoProps) => {
         onMouseOver={toggleInfoWindow}
         onMouseOut={toggleInfoWindow}
         icon={customIcon}
-        animation={google.maps.Animation.DROP}
+        // animation={google.maps.Animation.DROP}
         onClick={handleClickMarker}
       />
       {infowindowShown && (
