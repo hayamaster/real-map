@@ -1,6 +1,34 @@
 import { Input } from '@/components'
+import { useState, FormEvent, useRef } from 'react'
+import supabase from '@/apis/supabaseClient'
 
 const AddingRequest = () => {
+  const [cafeName, setCafeName] = useState<string>('')
+  const [cafeDescription, setCafeDescription] = useState<string>('')
+  const [cafeAddress, setCafeAddress] = useState<string>('')
+  const modalCloseRef = useRef<HTMLButtonElement>(null)
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!cafeName || !cafeDescription || !cafeAddress) return
+
+    const { error } = await supabase.from('request').insert({
+      name: cafeName,
+      description: cafeDescription,
+      address: cafeAddress,
+    })
+
+    if (error) {
+      console.warn(error)
+    } else {
+      setCafeName('')
+      setCafeDescription('')
+      setCafeAddress('')
+      alert('追加リクエストが完了できました。\nご意見ありがとうございます。')
+      modalCloseRef.current && modalCloseRef.current.click()
+    }
+  }
+
   return (
     <dialog id="adding-request" className="modal">
       <div className="modal-box bg-white">
@@ -19,10 +47,25 @@ const AddingRequest = () => {
               <p>24時間以内に審査が完了します。</p>
             </div>
           </div>
-          <form className="flex flex-col gap-4 px-2 py-1 md:px-4 md:py-3">
-            <Input label="喫茶店名" />
-            <Input label="簡単レビュー" />
-            <Input label="住所" />
+          <form
+            className="flex flex-col gap-4 px-2 py-1 md:px-4 md:py-3"
+            onSubmit={handleSubmit}
+          >
+            <Input
+              label="喫茶店名"
+              value={cafeName}
+              onChange={(e) => setCafeName(e.currentTarget.value)}
+            />
+            <Input
+              label="簡単レビュー"
+              value={cafeDescription}
+              onChange={(e) => setCafeDescription(e.currentTarget.value)}
+            />
+            <Input
+              label="住所"
+              value={cafeAddress}
+              onChange={(e) => setCafeAddress(e.currentTarget.value)}
+            />
             <div className="ml-auto">
               <button className="rounded-md bg-[#9747FF] px-2 py-1 text-xl text-white md:px-4 md:py-2">
                 提出
@@ -32,7 +75,7 @@ const AddingRequest = () => {
         </div>
       </div>
       <form method="dialog" className="modal-backdrop">
-        <button />
+        <button ref={modalCloseRef} />
       </form>
     </dialog>
   )
