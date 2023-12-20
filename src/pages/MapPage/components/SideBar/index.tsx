@@ -47,8 +47,8 @@ const SideBar = ({ markerInformation, setFocusId }: MarkerInformationProps) => {
               {name}
             </h1>
             <p className="text-sm text-gray-400 group-hover:text-gray-300 md:text-lg">
-              {location && location.length > 18
-                ? `${location?.substring(0, 18)}...`
+              {location && location.length > 20
+                ? `${location?.substring(0, 20)}...`
                 : location}
             </p>
             <p className="whitespace-pre-wrap text-sm text-gray-700 group-hover:text-gray-100 md:text-lg">

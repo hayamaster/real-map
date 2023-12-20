@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: ['class'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'base-content': '#000000',
+      },
+    },
     fontSize: {
       xs: '0.625rem',
       sm: '0.75rem',
@@ -14,5 +19,8 @@ export default {
       '4xl': '1.875rem',
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: false,
+  },
+  plugins: [require('daisyui')],
 }
