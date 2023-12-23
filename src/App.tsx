@@ -1,12 +1,8 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes'
-import ReactGA from 'react-ga4'
 import { useEffect } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getAnalytics, logEvent } from 'firebase/analytics'
-
-const gaTrackingId = import.meta.env.VITE_GOOGLE_ANALYTICS_ID // 환경 변수에 저장된 추적ID 가져오기
-ReactGA.initialize(gaTrackingId) // react-ga 초기화 및 debug 사용
 
 function App() {
   useEffect(() => {
@@ -20,15 +16,9 @@ function App() {
       measurementId: 'G-WFQ2L1MK38',
     }
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig)
     const _analytics = getAnalytics(app)
     logEvent(_analytics, 'view')
-  }, [])
-
-  useEffect(() => {
-    ReactGA.set({ page: location.pathname })
-    ReactGA.send('pageview')
   }, [])
 
   return (
