@@ -1,16 +1,14 @@
 # Real Map
 
-Rink : [real map](https://realmap-hayamaster.vercel.app/)
+Rink : [リアルマップ（real map)](https://realmap-hayamaster.vercel.app/)
 
 <br/>
 
 ## 🧑🏻‍💻👩🏻‍💻 Introduction
 
-<img src="./public/realmap.png" width="50rem" height="50rem"/>
+<img src="https://github.com/hayamaster/real-map/assets/88622675/edfa98ed-65ad-4b47-b9aa-aef0e58d88ee" width="430px" height="280px"/>
 
-```
 "An application that enables you to find cafes comfortable for computer work through Google Maps."
-```
 
 <br/>
 
@@ -93,13 +91,15 @@ This project was developed entirely by <a href="https://github.com/hayamaster">h
     <th style="text-align: center;">Additional request</th>
   </tr>
   <tr>
-    <td style="text-align: center;"><img src="https://github.com/prgrms-web-devcourse/Team-12-ReviewRanger-FE/assets/97094709/e8feaa93-aee3-49c4-b6bd-5c247c512207" width="300px" /></td>
-    <td style="text-align: center;"><img src="https://github.com/prgrms-web-devcourse/Team-12-ReviewRanger-FE/assets/97094709/fd4b801f-2e9d-4a74-9949-559fbd407b5e" width="300px" /></td>
+    <td style="text-align: center;"><img src="https://github.com/hayamaster/real-map/assets/88622675/4594e4e2-7c57-4d09-a471-7e9be3e20167" width="320px" /></td>
+    <td style="text-align: center;"><img src="https://github.com/hayamaster/real-map/assets/88622675/305c201c-1d2a-486f-bbe0-107d6ee22661" width="320px" /></td>
+  </tr>
+</table>
+<table>
+ <tr>
+    <th style="text-align: center;">Web</th>
   </tr>
   <tr>
-    <td style="text-align: center;">Web</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;"><img src="https://github.com/prgrms-web-devcourse/Team-12-ReviewRanger-FE/assets/97094709/6149b7f5-8854-4869-8260-7a4b7f22573a" width="200px" /></td>
+    <td style="text-align: center;"><img src="https://github.com/hayamaster/real-map/assets/88622675/4e2adb09-9d30-4498-a398-6483a808d404" width="660px" /></td>
   </tr>
 </table>
