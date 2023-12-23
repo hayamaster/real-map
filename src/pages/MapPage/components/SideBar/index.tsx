@@ -32,7 +32,7 @@ const SideBar = ({ markerInformation, setFocusId }: MarkerInformationProps) => {
   }
 
   return (
-    <div className="absolute left-1/2 top-2/3 z-10 flex h-[33%] min-w-[15rem] -translate-x-1/2 cursor-pointer flex-col gap-2.5 overflow-scroll py-3 md:left-auto md:right-3 md:top-0 md:h-full md:translate-x-0 md:py-5">
+    <div className="absolute bottom-0 z-10 flex w-full cursor-pointer flex-row gap-2.5 overflow-scroll px-3 py-3 md:right-0 md:top-0 md:h-full md:w-fit md:flex-col md:py-5">
       {markerInformation.map(
         ({ id, name, location, description, position }) => (
           <div
@@ -41,7 +41,7 @@ const SideBar = ({ markerInformation, setFocusId }: MarkerInformationProps) => {
             onMouseLeave={() => setFocusId(0)}
             onClick={() => handleClickInfo(position)}
             id={String(id)}
-            className="group flex max-w-[18rem] flex-col justify-start gap-2 rounded-2xl border border-[rgb(151,71,255)] bg-white px-3 py-2 shadow-xl hover:bg-[rgb(151,71,255)] hover:duration-200 md:px-4 md:py-3"
+            className="group flex min-w-[15rem] max-w-[18rem] flex-col justify-start gap-2 rounded-2xl border border-[rgb(151,71,255)] bg-white px-3 py-2 shadow-xl hover:bg-[rgb(151,71,255)] hover:duration-200 md:px-4 md:py-3"
           >
             <h1 className="text-base text-[#9747FF] group-hover:text-white md:text-2xl">
               {name}
