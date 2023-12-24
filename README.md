@@ -1,6 +1,6 @@
 # Real Map
 
-Rink : [リアルマップ（real map)](https://realmap-hayamaster.vercel.app/)
+Rink : [リアルマップ（real map)](https://realmap.molu24.com/)
 
 <br/>
 
