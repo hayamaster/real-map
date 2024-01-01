@@ -12,7 +12,7 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
   const [toastAnimation, setToastAnimation] = useState('')
 
   const handleCopyAddress = async () => {
-    if (!location) return
+    if (!location || isCopiedAddress) return
 
     await navigator.clipboard.writeText(location)
     setIsCopiedAddress(true)
