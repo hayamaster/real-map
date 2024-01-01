@@ -54,15 +54,13 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
             </p>
           </div>
         </div>
-        <label className="modal-backdrop" htmlFor="cafe_detail">
-          Close
-        </label>
+        <label className="modal-backdrop" htmlFor="cafe_detail" />
         {isCopiedAddress && (
           <div className={`${toastAnimation} toast toast-center toast-top`}>
-            <div className="alert alert-success bg-green-300">
+            <div className="alert alert-success flex gap-2 bg-green-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 shrink-0 stroke-current"
+                className="h-4 w-4 shrink-0 stroke-current md:h-5 md:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
               >
@@ -73,7 +71,7 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>住所をコピーしました</span>
+              <span className="text-base md:text-xl">住所をコピーしました</span>
             </div>
           </div>
         )}
