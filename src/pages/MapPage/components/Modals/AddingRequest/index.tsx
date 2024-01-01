@@ -33,7 +33,7 @@ const AddingRequest = () => {
     <dialog id="adding-request" className="modal">
       <div className="modal-box bg-white">
         <form method="dialog">
-          <button className="btn btn-circle btn-ghost btn-sm absolute right-2 top-2 hover:border-[#9747FF] hover:bg-[#F8E1FE] hover:text-[#70046C]">
+          <button className="btn btn-circle btn-ghost btn-sm absolute right-2 top-2 hover:border-[#9747FF] hover:bg-[#F8E1FE] hover:text-[#70046C] md:right-3 md:top-3">
             ✕
           </button>
         </form>

@@ -1,20 +1,14 @@
 import { APIProvider, Map } from '@vis.gl/react-google-maps'
-import { MapOptions, MarkerInfo, SideBar, AddingRequest } from './components'
+import {
+  MapOptions,
+  MarkerInfo,
+  SideBar,
+  AddingRequest,
+  CafeDetail,
+} from './components'
 import { useEffect, useState } from 'react'
 import supabase from '@/apis/supabaseClient'
-
-interface Position {
-  lat: number
-  lng: number
-}
-
-interface Cafe {
-  id: number
-  name: string
-  position: Position
-  location?: string
-  description?: string
-}
+import { CafeInfo } from '@/types'
 
 const center = {
   lat: 35.658034,
@@ -24,7 +18,8 @@ const center = {
 const MapPage = () => {
   const [isMapLoaded, setIsMapLoaded] = useState<boolean>(false)
   const [focusId, setFocusId] = useState<number>(0)
-  const [cafes, setCafes] = useState<Cafe[]>()
+  const [cafes, setCafes] = useState<CafeInfo[]>()
+  const [selectedCafe, setSelectedCafe] = useState<CafeInfo>()
 
   useEffect(() => {
     async function getCafes() {
@@ -69,13 +64,15 @@ const MapPage = () => {
               <Map zoom={16} center={center}>
                 {cafes.map((cafe) => (
                   <MarkerInfo
-                    markerInfo={cafe}
+                    cafeInfo={cafe}
                     key={cafe.id}
                     focusId={focusId}
+                    setSelectedCafe={setSelectedCafe}
                   />
                 ))}
               </Map>
               <MapOptions />
+              {selectedCafe && <CafeDetail cafeDetail={selectedCafe} />}
               <SideBar markerInformation={cafes} setFocusId={setFocusId} />{' '}
             </>
           )}
