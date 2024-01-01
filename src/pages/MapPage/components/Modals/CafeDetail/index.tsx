@@ -25,12 +25,14 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
             </h1>
             <div className="group flex cursor-pointer items-center gap-2 text-base text-gray-400 hover:text-gray-500 md:text-xl">
               <p>{location}</p>
-              <CopyIcon className="fill-gray-400 group-hover:fill-gray-500" />
+              <CopyIcon className="h-3 w-3 fill-gray-400 group-hover:fill-gray-500 md:h-5 md:w-5" />
             </div>
           </div>
           <div className="flex flex-col gap-1 md:gap-2">
             <h2 className="text-lg text-[#70046C] md:text-2xl">店舗情報</h2>
-            <p className="text-base md:text-xl">{description}</p>
+            <p className="whitespace-pre-line text-base md:text-xl">
+              {description?.replace(/\\n/g, '\n')}
+            </p>
           </div>
         </div>
         <label className="modal-backdrop" htmlFor="cafe_detail">

@@ -52,7 +52,7 @@ const SideBar = ({ markerInformation, setFocusId }: MarkerInformationProps) => {
                 : location}
             </p>
             <p className="whitespace-pre-wrap text-sm text-gray-700 group-hover:text-gray-100 md:text-lg">
-              {description}
+              {description?.replace(/\\n/g, '\n')}
             </p>
           </div>
         ),
