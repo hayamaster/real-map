@@ -1,5 +1,6 @@
 import { CopyIcon } from '@/assets/Icons'
 import { CafeInfo } from '@/types'
+import { useState } from 'react'
 
 interface CafeDetailProps {
   cafeDetail: CafeInfo
@@ -7,6 +8,21 @@ interface CafeDetailProps {
 
 const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
   const { name, location, description } = cafeDetail
+  const [isCopiedAddress, setIsCopiedAddress] = useState(false)
+  const [toastAnimation, setToastAnimation] = useState('')
+
+  const handleCopyAddress = async () => {
+    if (!location) return
+
+    await navigator.clipboard.writeText(location)
+    setIsCopiedAddress(true)
+    setToastAnimation('animate-fadeIn')
+
+    setTimeout(() => {
+      setToastAnimation('animate-fadeOut')
+      setTimeout(() => setIsCopiedAddress(false), 500)
+    }, 2000)
+  }
 
   return (
     <>
@@ -23,7 +39,10 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
             <h1 className="text-xl font-semibold text-[#9747FF] md:text-3xl">
               {name}
             </h1>
-            <div className="group flex cursor-pointer items-center gap-2 text-base text-gray-400 hover:text-gray-500 md:text-xl">
+            <div
+              onClick={handleCopyAddress}
+              className="group flex cursor-pointer items-center gap-2 text-base text-gray-400 hover:text-gray-500 md:text-xl"
+            >
               <p>{location}</p>
               <CopyIcon className="h-3 w-3 fill-gray-400 group-hover:fill-gray-500 md:h-5 md:w-5" />
             </div>
@@ -38,6 +57,26 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
         <label className="modal-backdrop" htmlFor="cafe_detail">
           Close
         </label>
+        {isCopiedAddress && (
+          <div className={`${toastAnimation} toast toast-center toast-top`}>
+            <div className="alert alert-success bg-green-300">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 shrink-0 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>住所をコピーしました</span>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
