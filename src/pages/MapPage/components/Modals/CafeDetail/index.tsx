@@ -1,20 +1,22 @@
-import { CheckIcon, CopyIcon } from '@/assets/Icons'
+import { CheckIcon, CopyIcon, ShareIcon } from '@/assets/Icons'
 import { CafeInfo } from '@/types'
 import { useState } from 'react'
+// import { logEvent } from 'firebase/analytics'
 
 interface CafeDetailProps {
   cafeDetail: CafeInfo
 }
 
 const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
+  const path = window.location.href
+
   const { name, location, description } = cafeDetail
-  const [isCopiedAddress, setIsCopiedAddress] = useState(false)
-  const [toastAnimation, setToastAnimation] = useState('')
+  const [isCopiedAddress, setIsCopiedAddress] = useState<boolean>(false)
+  const [toastAnimation, setToastAnimation] = useState<string>('')
+  const [copyData, setCopyData] = useState<string>('')
 
-  const handleCopyAddress = async () => {
-    if (!location || isCopiedAddress) return
-
-    await navigator.clipboard.writeText(location)
+  const copy = async (data: string) => {
+    await navigator.clipboard.writeText(data)
     setIsCopiedAddress(true)
     setToastAnimation('animate-fadeIn')
 
@@ -22,6 +24,29 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
       setToastAnimation('animate-fadeOut')
       setTimeout(() => setIsCopiedAddress(false), 500)
     }, 2000)
+  }
+
+  const handleCopyAddress = () => {
+    if (!location || isCopiedAddress) return
+    setCopyData('住所')
+    copy(location)
+  }
+
+  const handleCopyURL = () => {
+    if (isCopiedAddress) return
+    setCopyData('リンク')
+    copy(path)
+  }
+
+  const share = async () => {
+    if (navigator.share) {
+      await navigator.share({
+        title: 'リアルマップ',
+        url: path,
+      })
+    } else {
+      handleCopyURL()
+    }
   }
 
   return (
@@ -53,13 +78,23 @@ const CafeDetail = ({ cafeDetail }: CafeDetailProps) => {
               {description?.replace(/\\n/g, '\n')}
             </p>
           </div>
+          <div className="flex flex-col gap-1 md:gap-2">
+            <h2 className="text-lg text-[#70046C] md:text-2xl">シェアする</h2>
+            <div
+              className="group flex cursor-pointer items-center gap-2 text-base text-gray-400 hover:text-gray-500 md:text-xl"
+              onClick={share}
+            >
+              <p>このカフェをシェアする</p>
+              <ShareIcon className="h-3 w-3 stroke-gray-400 group-hover:stroke-gray-500 md:h-5 md:w-5" />
+            </div>
+          </div>
         </div>
         <label className="modal-backdrop" htmlFor="cafe_detail" />
         {isCopiedAddress && (
           <div className={`${toastAnimation} toast toast-center toast-top`}>
             <div className="alert alert-success flex gap-2 bg-green-300">
               <CheckIcon />
-              <span className="text-base md:text-xl">住所をコピーしました</span>
+              <span className="text-base md:text-xl">{`${copyData}をコピーしました`}</span>
             </div>
           </div>
         )}
