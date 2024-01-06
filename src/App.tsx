@@ -22,7 +22,7 @@ function App() {
   }, [])
 
   return (
-    <div className="h-screen">
+    <div className="h-dvh">
       <RouterProvider router={router} />
     </div>
   )
