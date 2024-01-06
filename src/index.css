@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#map {
+/* #map {
   min-height: 100vh;
   min-height: -webkit-fill-available;
-}
+} */

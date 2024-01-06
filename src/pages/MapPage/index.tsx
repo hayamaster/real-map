@@ -41,7 +41,7 @@ const MapPage = () => {
         apiKey={import.meta.env.VITE_GOOGLE_KEY}
         onLoad={() => setIsMapLoaded(true)}
       >
-        <div id="map" className="relative h-screen w-screen overflow-hidden">
+        <div id="map" className="h-svh relative w-screen overflow-hidden">
           <div className="fixed left-5 top-5 z-10 flex flex-col gap-4">
             <div className="rounded-xl bg-[#9747FF] px-2 py-1.5 md:px-3.5 md:py-2.5">
               <p className="text-lg font-medium text-white md:text-2xl">
