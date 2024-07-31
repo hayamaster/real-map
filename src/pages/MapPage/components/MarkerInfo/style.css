@@ -2,6 +2,10 @@ button.gm-ui-hover-effect {
   display: none !important;
 }
 
+.gm-style .gm-style-iw-ch {
+  padding: 0px;
+}
+
 .gm-style .gm-style-iw-c {
   padding: 0px;
   outline: none;

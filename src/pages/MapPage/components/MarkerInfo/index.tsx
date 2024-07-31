@@ -50,7 +50,7 @@ const MarkerInfo = ({
   }
 
   return (
-    <div>
+    <>
       <Marker
         position={cafeInfo.position}
         ref={markerRef}
@@ -71,7 +71,7 @@ const MarkerInfo = ({
         </InfoWindow>
       )}
       <label htmlFor="cafe_detail" className="btn" ref={modalRef} />
-    </div>
+    </>
   )
 }
 
