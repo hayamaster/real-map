@@ -61,7 +61,7 @@ const MapPage = () => {
           </div>
           {isMapLoaded && cafes && (
             <>
-              <Map zoom={16} center={center}>
+              <Map defaultCenter={center} defaultZoom={16}>
                 {cafes.map((cafe) => (
                   <MarkerInfo
                     cafeInfo={cafe}
